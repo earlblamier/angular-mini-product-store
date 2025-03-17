@@ -1,3 +1,4 @@
+HEAD
 # MiniProductStore
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.2.
@@ -57,3 +58,7 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+# angular-mini-product-store
+Mini Product Store
+b61c395d80080562783cb15ad60c9c3e04f4d296
