@@ -1,8 +1,15 @@
+<!-- app.component.html -->
+<h1>Welcome to Mini Product Store!</h1>
 <nav>
-  <a routerLink="/">Home</a> |
-  <a routerLink="/product">Products</a> |
-  <a routerLink="/cart">Cart</a> |
-  <a routerLink="/dashboard">Dashboard</a>
+  <ul>
+    <li><a routerLink="/" routerLinkActive="active">Home</a></li>
+    <li><a routerLink="/product" routerLinkActive="active" *ngIf="isAuthenticated">Product</a></li>
+    <li><a routerLink="/cart" routerLinkActive="active" *ngIf="isAuthenticated">Cart</a></li>
+    <li><a routerLink="/dashboard" routerLinkActive="active" *ngIf="isAuthenticated">Dashboard</a></li>
+    <li><a routerLink="/login" routerLinkActive="active" *ngIf="!isAuthenticated">Login</a></li>
+    <li><a (click)="logout()" *ngIf="isAuthenticated">Logout</a></li>
+  </ul>
 </nav>
 
 <router-outlet></router-outlet>
+

@@ -1,25 +1,25 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';  // Import CommonModule for *ngIf
 import { FormsModule } from '@angular/forms';
-import { AuthenticationService } from '../auth.service';
-import { Router } from '@angular/router';  // Import Router for redirection
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';  // Ensure this is the correct path
 
 @Component({
   selector: 'app-login',
   standalone: true,
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  imports: [FormsModule]
+  imports: [CommonModule, FormsModule]  // Add CommonModule here
 })
 export class LoginPage {
   username: string = '';
   password: string = '';
 
-  constructor(private authenticationService: AuthenticationService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   login() {
-    const isAuthenticated = this.authenticationService.login(this.username, this.password);
-    if (isAuthenticated) {
-      this.router.navigate(['/product']);  // Navigate to the Product page after successful login
+    if (this.authService.login(this.username, this.password)) {
+      this.router.navigate(['/product']);  // Redirect to Product page
     } else {
       alert('Invalid credentials!');
     }
