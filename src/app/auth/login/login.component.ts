@@ -18,10 +18,14 @@ export class LoginPage {
   constructor(private authService: AuthService, private router: Router) {}
 
   login() {
-    if (this.authService.login(this.username, this.password)) {
-      this.router.navigate(['/product']);  // Redirect to Product page
+    if (this.username && this.password) {
+      if (this.authService.login(this.username, this.password)) {
+        this.router.navigate(['/product']);  // Redirect to Product page
+      } else {
+        alert('Invalid credentials!');
+      }
     } else {
-      alert('Invalid credentials!');
+      alert('Please fill in both username and password!');
     }
   }
 }

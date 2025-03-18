@@ -4,13 +4,12 @@ import { AuthService } from './auth/auth.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
-
 @Component({
   selector: 'app-root',
-  standalone: true,  // ✅ Optional, but recommended
-  imports: [RouterOutlet, CommonModule],  // ✅ Correct import for routing
+  standalone: true,
+  imports: [RouterOutlet, CommonModule],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   title = 'mini-product-store';
@@ -18,12 +17,11 @@ export class AppComponent {
   constructor(
     private authService: AuthService,
     private router: Router
+  ) {}
 
-  ){}
-
-  // Use computed() to get the signal's value reactively
+  // Use computed() to reactively get the value of the authentication signal
   isAuthenticated = computed(() => this.authService.isAuthenticatedUser());
-    
+
   logout() {
     this.authService.logout();
     this.router.navigate(['/login']);
