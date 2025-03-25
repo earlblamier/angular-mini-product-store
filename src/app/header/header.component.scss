@@ -1,0 +1,32 @@
+header {
+    background-color: #ffffff; /* Change this to your desired background color */
+    padding: 1rem 0;
+  }
+  
+  .nav-link {
+    color: #000; /* Change this to your desired link color */
+  }
+  
+  .nav-link:hover {
+    color: #07785c; /* Change this to your desired hover color */
+  }
+  
+  .btn-outline-primary {
+    color: #07775e; /* Change this to your desired button color */
+    border-color: #07775e;
+  }
+  
+  .btn-outline-primary:hover {
+    background-color: #fac12b;
+    color: #fff;
+  }
+  
+  .btn-primary {
+    background-color: #07775e; /* Change this to your desired button color */
+    border-color: #07775e;
+  }
+  
+  .btn-primary:hover {
+    background-color: #fac12b;
+    border-color: #07785c;
+  }

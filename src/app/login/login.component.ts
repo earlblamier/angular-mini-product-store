@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';  // Import CommonModule for *ngIf
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';  // Ensure this is the correct path
+import { AuthService } from '../auth/auth.service';  // Ensure this is the correct path
 
 @Component({
   selector: 'app-login',

@@ -1,35 +1,32 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private isAuthenticatedSignal = signal(false); // Signal to track authentication state
+  private isAuthenticatedSubject = new BehaviorSubject<boolean>(false); // BehaviorSubject to track authentication state
+  isAuthenticatedUser = this.isAuthenticatedSubject.asObservable(); // Expose as Observable
 
   constructor() {}
 
   // Method to authenticate the user
   login(username: string, password: string): boolean {
-    // Reset authentication state before attempting login
-    this.isAuthenticatedSignal.set(false);
-
-    // Simple login check for demonstration (replace with real logic)
     if (username === 'admin' && password === 'password') {
-      this.isAuthenticatedSignal.set(true); // Set as authenticated
+      this.isAuthenticatedSubject.next(true); // Set as authenticated
       return true;
     }
-    // If authentication fails
-    this.isAuthenticatedSignal.set(false);
+    this.isAuthenticatedSubject.next(false);
     return false;
   }
 
-  // Getter for the authentication state
-  get isAuthenticatedUser() {
-    return this.isAuthenticatedSignal;  // Return the signal
+  // Logout method
+  logout() {
+    this.isAuthenticatedSubject.next(false); // Set the user as not authenticated
   }
 
-  // logout method
-  logout() {
-    this.isAuthenticatedSignal.set(false);  // Set the user as not authenticated
+  // Getter to check authentication status synchronously
+  isAuthenticated(): boolean {
+    return this.isAuthenticatedSubject.getValue(); // Allows synchronous check
   }
 }

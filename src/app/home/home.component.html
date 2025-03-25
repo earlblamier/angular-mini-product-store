@@ -1,0 +1,59 @@
+<!-- <div class="col-lg-10 mx-auto p-4 py-md-5 mt-5">
+  <main>
+    <h1 class="text-body-emphasis">Home - Welcome to Mini Product Store</h1>
+    <p class="fs-5 col-md-8">List of products from FakeStoreAPI.</p>
+
+    <div class="mb-5">
+    <hr style="width: auto; margin: 0 auto;">
+
+
+      <h2>Product List</h2>
+      <div class="products">
+        <div *ngFor="let product of products" class="product-card mb-4 p-3 border rounded">
+          <h3>{{ product.title }}</h3>
+          <img [src]="product.image" alt="{{ product.title }}" width="150" class="mb-3" />
+          <p>{{ product.description }}</p>
+          <p><strong>Price:</strong> ${{ product.price }}</p>
+          <p><strong>Category:</strong> {{ product.category }}</p>
+          <p><strong>Rating:</strong> {{ product.rating.rate }} ({{ product.rating.count }} reviews)</p>
+        </div>
+      </div>
+    </div>
+
+    
+
+    <hr style="width: auto; margin: 0 auto;">
+
+
+  </main>
+
+</div>
+
+ -->
+
+
+ <div class="col-lg-10 mx-auto p-4 py-md-5 mt-5">
+  <main>
+    <h1 class="text-body-emphasis text-center">Welcome to Mini Product Store</h1>
+    <p class="fs-5 col-md-8 mx-auto text-center">List of products from FakeStoreAPI.</p>
+
+    <div class="mb-5">
+      <hr style="width: 75%; margin: 0 auto;">
+
+      <h2 class="text-center">Product List</h2>
+      <div class="products d-flex flex-wrap justify-content-center">
+        <div *ngFor="let product of products" class="product-card mb-4 p-3 border rounded text-center">
+          <h3 class="text-primary">{{ product.title }}</h3>
+          <img [src]="product.image" alt="{{ product.title }}" width="150" class="mb-3 mx-auto d-block" />
+          <p><strong>Product ID:</strong> {{ product.id }}</p> <!-- Added Product ID -->
+          <p class="text-muted">{{ product.description }}</p>
+          <p><strong>Price:</strong> ${{ product.price }}</p>
+          <p><strong>Category:</strong> {{ product.category }}</p>
+          <p><strong>Rating:</strong> {{ product.rating.rate }} ({{ product.rating.count }} reviews)</p>
+        </div>
+      </div>
+    </div>
+
+    <hr style="width: 75%; margin: 0 auto;">
+  </main>
+</div>
