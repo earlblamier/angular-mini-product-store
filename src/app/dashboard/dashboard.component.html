@@ -3,12 +3,20 @@
 
     <main>
       <h1 class="text-body-emphasis">Dashboard</h1>
-      <p class="fs-5 col-md-8">Quickly and easily get started with Bootstrap's compiled, production-ready files with this barebones example featuring some basic HTML and helpful links. Download all our examples to get started.</p>
+
+        <p *ngIf="isAuthenticated">You are logged in.</p>
+        <p *ngIf="!isAuthenticated">You are not authenticated.</p>
+
+      <p class="fs-5 ">Quickly and easily get started with Bootstrap's compiled, production-ready files with this barebones example featuring some basic HTML and helpful links. Download all our examples to get started.</p>
   
       <div class="mb-5">
         <!-- <a href="" class="btn btn-primary btn-lg px-4">Log out</a> -->
+        <!-- Show the Sign Out button only if the user is authenticated -->
         <button *ngIf="isAuthenticated" class="btn btn-danger" (click)="onSignOut()">Sign Out</button>
+        <!-- <button *ngIf="authService.isAuthenticatedUser | async" class="btn btn-danger" (click)="onSignOut()">Sign Out</button> -->
+
       </div>
+      button
         
       <hr class="mb-3" style="width: 100%; margin: 0 auto;">
   

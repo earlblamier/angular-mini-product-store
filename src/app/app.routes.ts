@@ -7,22 +7,13 @@ import { AuthGuard } from './auth/auth.guard';
 import { LoginPage } from './login/login.component';
 import { ContactComponent } from './contact/contact.component';
 
-/* export const routes: Routes = [
-  { path: '', pathMatch: 'full', component: HomePage },
-  { path: 'product', component: ProductPage, canActivate: [authGuard] },
-  { path: 'cart', component: CartPage, canActivate: [authGuard] },
-  { path: 'dashboard', component: DashboardPage, canActivate: [authGuard] },
-  { path: 'login', component: LoginPage },
-  { path: 'add-product', component: ProductPage, canActivate: [authGuard] },
-]; */
-
 export const routes: Routes = [
-  { path: '', pathMatch: 'full', component: HomePage },
-  { path: 'product', component: ProductPage, canActivate:[AuthGuard] },  // Removed authGuard temporarily
-  { path: 'cart', component: CartPage },        // Removed authGuard temporarily
-  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-  { path: 'add-product', component: ProductPage, canActivate: [AuthGuard] },  // Removed authGuard temporarily
-  { path: 'contact', component: ContactComponent },
-  { path: 'login', component: LoginPage },
-  { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirect root to login
+  { path: '', component: HomePage }, // Root path as home (public route)
+  { path: 'home', component: HomePage }, // Home route (public route)
+  { path: 'product', component: ProductPage, canActivate: [AuthGuard] }, // Protected route
+  { path: 'cart', component: CartPage, canActivate: [AuthGuard] }, // Protected route
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] }, // Protected route
+  { path: 'add-product', component: ProductPage, canActivate: [AuthGuard] }, // Protected route
+  { path: 'contact', component: ContactComponent }, // Public route
+  { path: 'login', component: LoginPage }, // Public route
 ];
