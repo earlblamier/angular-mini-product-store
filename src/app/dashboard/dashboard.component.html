@@ -6,10 +6,11 @@
       <p class="fs-5 col-md-8">Quickly and easily get started with Bootstrap's compiled, production-ready files with this barebones example featuring some basic HTML and helpful links. Download all our examples to get started.</p>
   
       <div class="mb-5">
-        <a href="#" class="btn btn-primary btn-lg px-4">Download examples</a>
+        <!-- <a href="" class="btn btn-primary btn-lg px-4">Log out</a> -->
+        <button *ngIf="isAuthenticated" class="btn btn-danger" (click)="onSignOut()">Sign Out</button>
       </div>
-  
-      <hr class="col-3 col-md-2 mb-5">
+        
+      <hr class="mb-3" style="width: 100%; margin: 0 auto;">
   
       <div class="row g-5">
         <div class="col-md-6">
@@ -83,8 +84,6 @@
     </main>
   
   
-    <footer class="pt-5 my-5 text-body-secondary border-top">
-      Created by the Bootstrap team · © 2024
-    </footer>
+
   </div>
   

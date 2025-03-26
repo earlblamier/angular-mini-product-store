@@ -17,12 +17,14 @@ export class LoginPage {
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  // Renamed method to `onFormSubmit`
   onFormSubmit() {
     if (this.username && this.password) {
       if (this.authService.login(this.username, this.password)) {
         console.log('Login successful'); // Log success
-        this.router.navigate(['/product']); // Redirect to Product page on success
+  
+        // Get the returnUrl from query parameters or default to '/dashboard'
+        const returnUrl = this.router.routerState.snapshot.root.queryParams['returnUrl'] || '/dashboard';
+        this.router.navigate([returnUrl]); // Redirect to the original page or dashboard
       } else {
         console.error('Invalid credentials'); // Log error
         alert('Invalid credentials!'); // Show alert for invalid credentials
