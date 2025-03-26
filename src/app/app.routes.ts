@@ -19,6 +19,7 @@ export const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomePage },
   { path: 'product', component: ProductPage },  // Removed authGuard temporarily
   { path: 'cart', component: CartPage },        // Removed authGuard temporarily
-  { path: 'dashboard', component: DashboardPage }, // Removed authGuard temporarily
+  { path: 'dashboard', component: DashboardPage, canActivate: [authGuard] },
   { path: 'add-product', component: ProductPage },  // Removed authGuard temporarily
+  { path: 'login', component: LoginPage },
 ];
