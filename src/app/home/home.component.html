@@ -1,32 +1,4 @@
-<!--  <div class="col-lg-10 mx-auto p-4 py-md-5 mt-5">
-  
-  <main>
-    <h1 class="text-body-emphasis text-center">Welcome to Mini Product Store</h1>
-    <p class="fs-5 col-md-8 mx-auto text-center">Angular Project by Earl Lamier</p>
-
-    <div class="mb-5">
-      <hr style="width: 75%; margin: 0 auto;">
-
-      <h2 class="text-center">Product List</h2>
-      <div class="products d-flex flex-wrap justify-content-center">
-        <div *ngFor="let product of products" class="product-card mb-4 p-3 border rounded text-center">
-          <h3 class="text-primary">{{ product.title }}</h3>
-          <img [src]="product.image" alt="{{ product.title }}" width="150" class="mb-3 mx-auto d-block" />
-          <p><strong>Product ID:</strong> {{ product.id }}</p> 
-          <p class="text-muted">{{ product.description }}</p>
-          <p><strong>Price:</strong> ${{ product.price }}</p>
-          <p><strong>Category:</strong> {{ product.category }}</p>
-          <p><strong>Rating:</strong> {{ product.rating.rate }} ({{ product.rating.count }} reviews)</p>
-        </div>
-      </div>
-    </div>
-
-    <hr style="width: 75%; margin: 0 auto;">
-  </main>
-</div>
- -->
-
- <div class="col-lg-10 mx-auto p-4 py-md-5 mt-5">
+<div class="col-lg-10 mx-auto p-4 py-md-5 mt-5">
   <main>
     <h1 class="text-body-emphasis text-center">🛒 Welcome to Mini Product Store</h1>
     <p class="fs-5 col-md-8 mx-auto text-center">Angular Project by Earl Lamier</p>
@@ -36,7 +8,7 @@
       
       <h2 class="text-center mb-4">🛍️ Product List</h2>
 
-      <!-- Product Grid -->
+      <!-- Product Grid: 2 items per row -->
       <div class="row row-cols-1 row-cols-md-2 g-4">
         <div *ngFor="let product of products" class="col">
           <div class="card h-100 shadow-sm">
@@ -44,6 +16,7 @@
 
             <div class="card-body text-center">
               <h5 class="card-title text-primary">{{ product.title }}</h5>
+              <p><strong>Product ID:</strong> #{{ product.id }}</p> <!-- Added Product ID -->
               <p class="card-text text-muted">{{ product.description | slice:0:100 }}...</p>
               <p><strong>Price:</strong> ${{ product.price }}</p>
               <p><strong>Category:</strong> {{ product.category }}</p>
@@ -64,3 +37,41 @@
     <hr style="width: 75%; margin: 0 auto;">
   </main>
 </div>
+
+<!-- Floating Back to Top Button -->
+<button *ngIf="showBackToTop" id="backToTop" class="btn btn-primary rounded-circle shadow-lg" (click)="scrollToTop()">
+  ⬆️
+</button>
+
+<style>
+  #backToTop {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    z-index: 1000;
+  }
+</style>
+
+
+<!-- Script for Scrolling Function -->
+<script>
+  window.onscroll = function () {
+    let button = document.getElementById("backToTop");
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+      button.style.display = "flex";
+    } else {
+      button.style.display = "none";
+    }
+  };
+
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+</script>
