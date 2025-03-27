@@ -1,77 +1,78 @@
-<!-- <div class="container mt-5">
-  <h1 class="text-center">Cart</h1>
-
-  <p class="fs-5 col-md-8">Implemented logic to add items to the cart based on user selection from Fake Store API.</p>
-  <div *ngIf="carts.length > 0; else noCarts">
-    <ul class="list-group">
-      <li *ngFor="let cart of carts" class="list-group-item">
-        <strong>Cart ID:</strong> {{ cart.id }}<br />
-        <strong>User ID:</strong> {{ cart.userId }}<br />
-        <strong>Date:</strong> {{ cart.date | date:'medium' }}<br />
-        <strong>Products:</strong>
-        <ul>
-          <li *ngFor="let product of cart.products">
-            <strong>Product ID:</strong> {{ product.productId }},
-            <strong>Quantity:</strong> {{ product.quantity }}
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-
-
-  <ng-template #noCarts>
-    <p>No carts found.</p>
-  </ng-template>
-</div> -->
 
 <div class="container mt-5">
   <h1 class="text-center mb-4">🛒 Your Shopping Cart</h1>
-  
-  <p class="fs-5 text-center">Manage your selected products easily.</p>
 
-  <!-- Display cart items if available -->
-  <div *ngIf="carts.length > 0; else noCarts">
-    <div class="row">
-      <div *ngFor="let cart of carts" class="col-md-8 offset-md-2 mb-4">
+  <p class="fs-5 text-center">Review your selected products before checkout.</p>
+
+  <!-- Cart Items -->
+  <div *ngIf="cartProducts.length > 0; else noCart">
+    <div class="table-responsive">
+      <table class="table table-bordered align-middle text-center">
+        <thead class="table-light">
+          <tr>
+            <th>Image</th>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of cartProducts">
+            <td>
+              <img [src]="product.image" alt="{{ product.title }}" class="img-thumbnail" style="width: 100px; height: 100px; object-fit: contain;" />
+            </td>
+            <td>
+              <h6 class="text-primary">{{ product.title }}</h6>
+              <p class="text-muted mb-0"><strong>Category:</strong> {{ product.category }}</p>
+            </td>
+            <td>${{ product.price }}</td>
+            <td>
+              <div class="d-flex justify-content-center align-items-center">
+                <button class="btn btn-sm btn-outline-secondary me-2" (click)="cartService.updateProductQuantity(product.productId, product.quantity - 1)">
+                  <i class="bi bi-dash"></i>
+                </button>
+                <span>{{ product.quantity }}</span>
+                <button class="btn btn-sm btn-outline-primary ms-2" (click)="cartService.updateProductQuantity(product.productId, product.quantity + 1)">
+                  <i class="bi bi-plus"></i>
+                </button>
+              </div>
+            </td>
+            <td>${{ product.price * product.quantity }}</td>
+            <td>
+              <button class="btn btn-sm btn-outline-danger" (click)="removeFromCart(product.productId)">
+                <i class="bi bi-trash"></i> Remove
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Cart Summary -->
+    <div class="row mt-4">
+      <div class="col-md-6 offset-md-6">
         <div class="card shadow-sm">
           <div class="card-body">
-            <h5 class="card-title">🛍️ Cart ID: {{ cart.id }}</h5>
-            <p class="card-text"><strong>User ID:</strong> {{ cart.userId }}</p>
-            <p class="card-text"><strong>Date:</strong> {{ cart.date | date:'medium' }}</p>
-
-            <h6 class="mt-3">Products:</h6>
-            <ul class="list-group">
-              <li *ngFor="let product of cart.products" class="list-group-item d-flex align-items-center justify-content-between">
-                <div>
-                  <strong>🛒 Product ID:</strong> {{ product.productId }}  
-                  <span class="badge bg-secondary ms-2">Qty: {{ product.quantity }}</span>
-                </div>
-
-                <!-- Placeholder Buttons (No Functionality) -->
-                <div>
-                  <button class="btn btn-sm btn-outline-secondary me-2">
-                    <i class="bi bi-dash"></i>
-                  </button>
-                  <button class="btn btn-sm btn-outline-primary me-2">
-                    <i class="bi bi-plus"></i>
-                  </button>
-                  <button class="btn btn-sm btn-outline-danger">
-                    <i class="bi bi-trash"></i>
-                  </button>
-                </div>
-              </li>
-            </ul>
+            <h5 class="card-title">Cart Summary</h5>
+            <hr />
+            <p class="d-flex justify-content-between">
+              <span>Subtotal:</span>
+              <span>${{ totalPrice }}</span>
+            </p>
+            <button class="btn btn-success w-100 mt-3">Proceed to Checkout</button>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Fallback if no carts are available -->
-  <ng-template #noCarts>
+  <!-- Fallback if no cart is available -->
+  <ng-template #noCart>
     <div class="text-center mt-4">
-      <p class="fs-4 text-muted">😞 No items in your cart.</p>
+      <p class="fs-4 text-muted">😞 Your cart is empty.</p>
+      <a href="/home" class="btn btn-primary">Continue Shopping</a>
     </div>
   </ng-template>
 </div>

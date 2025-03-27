@@ -1,34 +1,3 @@
-<!-- <header class="p-3 text-bg-dark">
-  <div class="container">
-    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-      <a routerLink="/home" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-        <img src="assets/images/atom-1.png" class="img=fluid bi me-2" width="40" height="40" alt="Tazkify Atom Logo">
-      </a>
-
-      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-        <li><a routerLink="/home" routerLinkActive="currentActive" class="nav-link px-2 text-white">Home</a></li>
-        <li><a routerLink="/dashboard" routerLinkActive="currentActive" class="nav-link px-2 text-white">Dashboard</a></li>
-        <li><a routerLink="/cart" routerLinkActive="currentActive" class="nav-link px-2 text-white">Cart</a></li>
-        <li><a routerLink="/add-product" routerLinkActive="currentActive" class="nav-link px-2 text-white">Add Product</a></li>
-        <li><a routerLink="/contact" routerLinkActive="currentActive" class="nav-link px-2 text-white">Contact</a></li>
-      </ul>
-
-      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-        <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
-      </form>
-
-      <div class="text-end">
-        <button routerLink="/login" type="button" class="btn btn-outline-light me-2">Login</button>
-        <button type="button" class="btn btn-warning">Sign-up</button>
-        <button class="btn btn-outline-danger ms-2" (click)="onSignOut()">Sign Out</button>
-
-      </div>
-    </div>
-  </div>
-</header>
- -->
-
-
 
  <header class="p-3 text-bg-dark">
   <div class="container">
@@ -58,6 +27,28 @@
       <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
         <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
       </form>
+
+      <!-- Cart Button with Item Count -->
+      <!-- <div class="text-end me-3">
+        <button routerLink="/cart" type="button" class="btn btn-outline-light position-relative">
+          Cart
+          <span *ngIf="cartItemCount > 0" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            {{ cartItemCount }}
+            <span class="visually-hidden">items in cart</span>
+          </span>
+        </button>
+      </div> -->
+
+      <!-- Cart Button with Item Count -->
+      <div class="text-end me-3">
+        <button routerLink="/cart" type="button" class="btn btn-outline-light position-relative">
+          Cart
+          <span *ngIf="cartItemCount > 0" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            {{ cartItemCount }}
+            <span class="visually-hidden">items in cart</span>
+          </span>
+        </button>
+      </div>
 
       <!-- Authentication Buttons -->
       <div class="text-end">

@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file. Each commits are similar to each version.
 
+## [1.25]
+
+### fixed
+-- cart page. able to add product from home page and update in cart page.
+
 ## [1.23] - 2025-03-27
 
 ### Fixed 

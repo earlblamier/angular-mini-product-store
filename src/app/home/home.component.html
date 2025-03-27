@@ -12,26 +12,27 @@
       <div class="row row-cols-1 row-cols-md-2 g-4">
         <div *ngFor="let product of products" class="col">
           <div class="card h-100 shadow-sm">
-            <img [src]="product.image" alt="{{ product.title }}" class="card-img-top p-3" style="height: 200px; object-fit: contain;"/>
-
+            <img [src]="product.image" alt="{{ product.title }}" class="card-img-top p-3" style="height: 200px; object-fit: contain;" />
+      
             <div class="card-body text-center">
               <h5 class="card-title text-primary">{{ product.title }}</h5>
-              <p><strong>Product ID:</strong> #{{ product.id }}</p> <!-- Added Product ID -->
-              <p class="card-text text-muted">{{ product.description | slice:0:100 }}...</p>
+              <p><strong>Product ID:</strong> #{{ product.id }}</p>
+              <p class="card-text text-muted">{{ product.description | slice: 0:100 }}...</p>
               <p><strong>Price:</strong> ${{ product.price }}</p>
               <p><strong>Category:</strong> {{ product.category }}</p>
               <p><strong>Rating:</strong> ⭐{{ product.rating.rate }} ({{ product.rating.count }} reviews)</p>
             </div>
-
+      
             <!-- Add to Cart Button -->
             <div class="card-footer text-center">
-              <button class="btn btn-success w-100">
+              <button class="btn btn-success w-100" (click)="addToCart(product)">
                 <i class="bi bi-cart-plus"></i> Add to Cart
               </button>
             </div>
           </div>
         </div>
       </div>
+
     </div>
 
     <hr style="width: 75%; margin: 0 auto;">
