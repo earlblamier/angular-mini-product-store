@@ -1,6 +1,12 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+All notable changes to this project will be documented in this file. Each commits are similar to each version.
+
+## [1.23] - 2025-03-27
+
+### Fixed 
+- authed logged in with observable. hide the login button when logged in.
+- hide dashboard page and add product if not logged in.
 
 ## [1.12] - update UI home
 ## [1.11.0] - update UI home
