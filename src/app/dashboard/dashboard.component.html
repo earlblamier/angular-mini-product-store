@@ -1,31 +1,54 @@
 <div class="container mt-5">
-  <h1 class="text-center">Dashboard</h1>
+  <h1 class="text-center mb-4">👤 User Dashboard</h1>
 
-  <p class="fs-5">Users from Fake Store API:</p>
+  <p class="fs-5 text-center">Manage your users from the Fake Store API.</p>
+
+  <!-- Add User Button Outside the Records -->
+  <div class="text-center mb-4">
+    <button class="btn btn-primary btn-lg">
+      <i class="bi bi-plus-circle"></i> Add New User
+    </button>
+  </div>
 
   <!-- Display the list of users -->
   <div *ngIf="users.length > 0; else noUsers">
-    <ul class="list-group">
-      <li *ngFor="let user of users" class="list-group-item">
-        <strong>ID:</strong> {{ user.id }}<br />
-        <strong>Username:</strong> {{ user.username }}<br />
-        <strong>Email:</strong> {{ user.email }}<br />
-        <strong>Password:</strong> {{ user.password }}<br />
-        <strong>Name:</strong> {{ user.name.firstname }} {{ user.name.lastname }}<br />
-        <strong>Address:</strong>
-        <ul>
-          <li><strong>City:</strong> {{ user.address.city }}</li>
-          <li><strong>Street:</strong> {{ user.address.street }}</li>
-          <li><strong>Number:</strong> {{ user.address.number }}</li>
-          <li><strong>Zipcode:</strong> {{ user.address.zipcode }}</li>
-          <li><strong>Geolocation:</strong> Lat: {{ user.address.geolocation.lat }}, Long: {{ user.address.geolocation.long }}</li>
-        </ul>
-      </li>
-    </ul>
+    <div class="row">
+      <div *ngFor="let user of users" class="col-md-8 offset-md-2 mb-4">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">🆔 User ID: {{ user.id }}</h5>
+            <p class="card-text"><strong>Username:</strong> {{ user.username }}</p>
+            <p class="card-text"><strong>Email:</strong> {{ user.email }}</p>
+            <p class="card-text"><strong>Name:</strong> {{ user.name.firstname }} {{ user.name.lastname }}</p>
+
+            <h6 class="mt-3">Address:</h6>
+            <ul>
+              <li><strong>City:</strong> {{ user.address.city }}</li>
+              <li><strong>Street:</strong> {{ user.address.street }}</li>
+              <li><strong>Number:</strong> {{ user.address.number }}</li>
+              <li><strong>Zipcode:</strong> {{ user.address.zipcode }}</li>
+              <li><strong>Geolocation:</strong> Lat: {{ user.address.geolocation.lat }}, Long: {{ user.address.geolocation.long }}</li>
+            </ul>
+
+            <!-- Placeholder Buttons for Edit and Delete -->
+            <div class="mt-4 text-end">
+              <button class="btn btn-sm btn-outline-warning me-2">
+                <i class="bi bi-pencil"></i> Edit
+              </button>
+              <button class="btn btn-sm btn-outline-danger me-2">
+                <i class="bi bi-trash"></i> Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Fallback if no users are available -->
   <ng-template #noUsers>
-    <p>No users found.</p>
+    <div class="text-center mt-4">
+      <p class="fs-4 text-muted">🚫 No users available.</p>
+    </div>
   </ng-template>
 </div>
