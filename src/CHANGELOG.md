@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.7.0]
+### added
+- fetch users using angular 19 provideHttpClient() same as products
+## [1.6.0] - add signout
 ## [1.2.0] - 2025-03-26 🚀 (New Features & Enhancements)
 
 ### Added

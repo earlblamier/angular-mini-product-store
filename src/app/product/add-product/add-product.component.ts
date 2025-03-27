@@ -5,7 +5,6 @@ import { ProductService } from '../product.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
-
 @Component({
   selector: 'add-product',
   standalone: true, // Mark as standalone
@@ -15,10 +14,12 @@ import { CommonModule } from '@angular/common';
 })
 export class AddProductComponent {
   product = {
+    id: 0,
     title: '',
-    price: 0,
+    price: 0.1,
     description: '',
-    image: ''
+    category: '',
+    image: '' // Default to an empty string
   };
 
   constructor(
@@ -42,9 +43,11 @@ export class AddProductComponent {
   // Method to reset the form
   resetForm(): void {
     this.product = {
+      id: 0,
       title: '',
-      price: 0,
+      price: 0.1,
       description: '',
+      category: '',
       image: '' // Reset the image property
     };
   }
@@ -55,12 +58,12 @@ export class AddProductComponent {
       alert('You must be logged in to add a product!');
       return;
     }
-  
-    if (!this.product.title || this.product.price <= 0 || !this.product.description) {
+
+    if (!this.product.title || this.product.price <= 0 || !this.product.description || !this.product.category) {
       alert('Please fill in all required fields with valid data!');
       return;
     }
-  
+
     this.productService.addProduct(this.product).subscribe(
       response => {
         alert('Product added successfully!');

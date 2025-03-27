@@ -2,12 +2,12 @@
   <h1 class="text-center">Add New Product</h1>
   <form (ngSubmit)="onSubmit()" #productForm="ngForm" class="mt-4">
     <div class="mb-3">
-      <label for="productName" class="form-label">Product Name</label>
+      <label for="productTitle" class="form-label">Product Title</label>
       <input
         type="text"
-        id="productName"
+        id="productTitle"
         class="form-control"
-        name="name"
+        name="title"
         [(ngModel)]="product.title"
         required
       />
@@ -33,6 +33,28 @@
         rows="3"
         required
       ></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="productCategory" class="form-label">Category</label>
+      <input
+        type="text"
+        id="productCategory"
+        class="form-control"
+        name="category"
+        [(ngModel)]="product.category"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="productImage" class="form-label">Image URL</label>
+      <input
+        type="text"
+        id="productImage"
+        class="form-control"
+        name="image"
+        [(ngModel)]="product.image"
+        required
+      />
     </div>
     <button type="submit" class="btn btn-primary" [disabled]="!productForm.valid">Add Product</button>
   </form>
