@@ -27,11 +27,11 @@ export class LoginPage {
         this.router.navigate([returnUrl]); // Redirect to the original page or dashboard
       } else {
         console.error('Invalid credentials'); // Log error
-        alert('Invalid credentials!'); // Show alert for invalid credentials
+        alert('Invalid credentials! Use admin and password'); // Show alert for invalid credentials
       }
     } else {
       console.warn('Username or password is empty'); // Log warning
-      alert('Please fill in both username and password!'); // Show alert for empty fields
+      alert('Please fill, use admin and password !'); // Show alert for empty fields
     }
   }
 }
